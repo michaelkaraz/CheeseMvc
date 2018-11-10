@@ -1,0 +1,33 @@
+﻿@model IList<Cheese>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+
+}
+
+<h2>My Cheese</h2>
+<a asp-area="" asp-controller="Cheese" asp-action="Add">Add cheese</a>
+@if (Model.Count == 0)
+{
+    <p>No cheeses yet</p>
+}
+else
+{
+    <table class="table-striped" style="width: 50%">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+        </tr>
+        @foreach (var cheese in Model)
+        {
+            <tr>
+                <td>@cheese.Name</td> 
+                <td>@cheese.Description</td>  
+                <td>@cheese.Category.Name</td>  
+            </tr>
+        }
+
+    </table>
+}
